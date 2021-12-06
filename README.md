@@ -1,9 +1,8 @@
 # 항해99 미니프로젝트 10조 - 프론트(이서현, 이해원)
 와이어프레임 : 
 
-## 🙌🏻member
 
-In the project directory, you can run:
+## 🙌🏻member
 
 ### view
 서현
