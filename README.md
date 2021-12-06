@@ -1,2 +1,0 @@
-# chachachaFE
-mini project frontend
