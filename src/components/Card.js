@@ -1,17 +1,28 @@
 import React from "react";
 
+
 import {Grid,Text,Image} from '../elements';
+import styled from 'styled-components';
+
+
 
 const Card = (props) => {
 
     return (
         <React.Fragment>
-            <div>thumbnail</div>
-            <div>category</div>
-            <div>title</div>
-            <div>price</div>
-            <div>연비</div>
-            <div>연료</div>
+           <Grid>
+               <Grid>
+                   {/* <Image src={props.thumbnail}/> */}
+               </Grid>
+               <Grid>
+                   <Text>{props.category}</Text>
+                   <Text>{props.title}</Text>
+                   <Text>{props.price}원</Text>
+                   <Text>{props.연비}</Text>
+                   <Text>{props.연료}</Text>
+               </Grid>
+           </Grid> 
+            
         </React.Fragment>
     );
 }
@@ -25,4 +36,6 @@ Card.defaultProps = {
     연비 : "정보없음",
     연료 : "가솔린",
     }
+
+
 export default Card;

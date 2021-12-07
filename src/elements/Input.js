@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Text } from "../elements";
 
+//FIXME: border {...style 로 빼줘야하는지}
 const Input = (props) => {
   const {
     border,

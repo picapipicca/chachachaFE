@@ -58,7 +58,7 @@ const Btn = styled.button`
   width: ${(props) => props.width};
   height: 40px;
   background-color: ${(props) => (props.disabled ? "#D5CABE" : "#FB8631")};
-  ${(props) => (props.bgcolor ? `background-color : ${props.bgcolor};` : "")};
+  ${(props) => (props.bg ? `background-color : ${props.bg};` : "")};
   border: none;
   border-radius: 3px;
   color: ${(props) => props.color};

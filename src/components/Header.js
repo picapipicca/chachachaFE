@@ -1,45 +1,66 @@
 import React from "react";
 import { Grid,Image,Button,Text } from "../elements";
-const Header = (props) => {
-    // 로그인 되어있냐/아니냐? && 토큰 가지고 있냐 없냐? 확인하고 useEffect 훅 사용해서 is_login 토큰확인
 
-    // if (is_login && is_token) {
-    //     return (
-    //       <React.Fragment>
-    //         <Grid is_flex padding="4px 16px">
-    //           <Grid>
-    //            <Image src = {chachacha 로고 넣어주기}/>
-    //           </Grid>
-    //           <Grid is_flex>
-    //             <Button bgcolor="#b2cef7" color="#212121" text="로그아웃"></Button>
-    //             <Button
-    //               bgcolor="#6f98b0"
-    //               color="#212121"
-    //               text="로그아웃"
-    //               _onClick={() => {
-    //                 dispatch(userActions.logoutFB());
-    //               }}
-    //             ></Button>
-    //           </Grid>
-    //         </Grid>
-    //       </React.Fragment>
-    //     );
-    //   }
-    
+import { useSelector, useDispatch } from "react-redux"; 
+import { actionCreators as userActions } from "../redux/modules/user";
+import { history } from '../redux/configStore';
+
+const Header = (props) => {
+
+  const dispatch = useDispatch();
+  const is_login = useSelector((state) => state.user.is_login);
+  
+    // const [is_login , setIslogin] = React.useState(false);
+    if(is_login){
+        return(
+          <React.Fragment>
+            <Grid is_flex  padding = "4px 16px">
+              <Grid is_flex width="auto">
+                <img src={props.src} alt="" style ={{width:"13vw" , cursor :"pointer"}} onClick={()=>{
+                  history.push("/");
+                }} />
+              </Grid>
+              <Grid is_flex >
+                <Text bold> {props.user_id}</Text>
+              </Grid>
+              <Grid is_flex width="20vw">
+                <Button
+                  bg ="#CCC2BE" 
+                  margin = "0px 5px"
+                  text="로그아웃"
+                  _onClick={() => {
+                  dispatch(userActions.logOut({}));
+                    }}
+                  ></Button>
+              </Grid>
+            </Grid>
+          </React.Fragment>
+        );
+      }
+      
     return (
         <React.Fragment>
             <Grid is_flex padding = "4px 16px">
-                <Image/>
-            </Grid>
+                <Grid >
+                    <img src={props.src} alt="" style ={{width:"13vw" , cursor :"pointer"}} onClick={()=>{
+                  history.push("/");
+                }}/>
+                </Grid>
 
-            <Grid is_flex>
-                <Button text ="로그인"></Button>
-                <Button text ="회원가입"></Button>
+                <Grid is_flex width = "40vw">
+                    <Button bg ="#CCC2BE" margin = "0px 5px" text ="로그인"></Button> 
+                    <Button bg ="#CCC2BE" text ="회원가입"></Button>
+                </Grid>
             </Grid>
+            
         </React.Fragment>
     );
     
 }
-Header.defaultProps = {}
+Header.defaultProps = {
+    user_id : "chachacha1",
+    is_me: false,
+    src: "https://yoloiscute.s3.ap-northeast-2.amazonaws.com/logo.png",
+}
 
 export default Header;

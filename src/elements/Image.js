@@ -17,18 +17,16 @@ const Image = (props) => {
   if (shape === "big_square") {
     return <BigSquareImage {...styles}></BigSquareImage>;
   }
-
-  if (shape === "small_square") {
-    return <SmallSquareImage {...styles}></SmallSquareImage>;
-  }
 };
 
 Image.defaultProps = {
-  shape: "circle",
-  src: "https://user-images.githubusercontent.com/75834421/124404954-0be05f80-dd78-11eb-8048-0a5517211d3e.jpg",
-  size: 40,
+  shape: "logo",
+  src: "https://images.all-free-download.com/images/graphiclarge/line_drawing_vehicle_car_713.jpg",
+  size: 36,
   half: false,
 };
+
+
 
 const CircleImage = styled.img`
   --size: ${(props) => props.size}px;
@@ -44,28 +42,12 @@ const CircleImage = styled.img`
 
 const BigSquareImage = styled.img`
   width: 100%;
-  ${(props) => (props.half ? `flex-basis: 50%;` : "")}
-  min-width: 250px;
+  ${(props) => (props.half ? `flex-basis: 30%;` : "")}
+  min-width: 100px;
   background-image: url(${(props) => props.src});
   background-size: cover;
   margin: 10px 0;
-  @media (max-width: 280px) {
-    min-width: 150px;
-  }
-  @media (max-width: 360px) {
-    min-width: 180px;
-  }
-`;
-
-const SmallSquareImage = styled.div`
-  --size: ${(props) => props.size}px;
-  width: var(--size);
-  min-width: var(--size);
-  height: var(--size);
-  min-height: var(--size);
-  background-image: url("${(props) => props.src}");
-  background-size: cover;
-  margin: 10px 0;
+  
 `;
 
 export default Image;

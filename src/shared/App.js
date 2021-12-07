@@ -5,19 +5,19 @@ import {BrowserRouter, Route} from "react-router-dom";
 import Header from "../components/Header";
 import CardList from '../pages/CardList';
 import Login from "../pages/Login";
-// import Header from '../components/Header';
-
+import { ConnectedRouter } from "connected-react-router";
+import {history} from "../redux/configStore";
 
 
 
 function App() {
   return (
    <React.Fragment>
-     <BrowserRouter>
-     
-      <Route path = "/" exact component = {CardList}/>
-      <Route exact path="/login" component={Login} />
-     </BrowserRouter>
+     <Header></Header>
+      <ConnectedRouter history={history}>
+        <Route path = "/" exact component = {CardList}/>
+        <Route exact path="/login" component={Login} />
+      </ConnectedRouter>
    </React.Fragment>
   );
 }
