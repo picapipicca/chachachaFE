@@ -4,6 +4,7 @@ import styled from "styled-components";
 const Grid = (props) => {
   const {
     children,
+    border,
     is_flex,
     width,
     padding,
@@ -22,6 +23,7 @@ const Grid = (props) => {
     bg,
     relative,
     is_main,
+    border,
   };
   return (
     <GridContainer {...styles} onClick={_onClick}>
@@ -39,6 +41,7 @@ Grid.defaultProps = {
   bg: false,
   relative: false,
   _onClick: () => {},
+  border : false,
 };
 
 const GridContainer = styled.div`
@@ -54,5 +57,6 @@ const GridContainer = styled.div`
   ${(props) => (props.margin ? `margin: ${props.margin};` : "")};
   ${(props) => (props.bg ? `background-color: ${props.bg};` : "")};
   ${(props) => (props.relative ? `position: relative;` : "")};
+  ${(props) => (props.border? `border : ${props.border};`: "")};
 `;
 export default Grid;

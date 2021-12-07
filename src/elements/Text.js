@@ -7,7 +7,6 @@ const Text = (props) => {
 
   const styles = {
     size,
-    children,
     margin,
     width,
     bold,
@@ -28,22 +27,16 @@ Text.defaultProps = {
   bold: false,
   _onClick: () => {},
   is_click: false,
-  width: false,
   center: false,
 };
 
 const P = styled.p`
   word-break: break-all;
-  ${(props) => (props.is_click ? `cursor: pointer;` : "")}
-  font-size: ${(props) => props.size};
+  ${(props) => (props.is_click ? `cursor: pointer;` : "")};
+  ${(props) => (props.size? `font-size: ${props.size};` : `font-size: 14px;`)};
   ${(props) => (props.margin ? `margin: ${props.margin};` : "")};
-  font-weight: ${(props) => (props.bold ? 700 : 400)};
+  font-weight: ${(props) => (props.bold ? "600" : "400")};
   ${(props) => (props.center ? `text-align: center;` : "")};
-  ${(props) => (props.width ? `width: ${props.width};` : "")};
-
-  @media (max-width: 48em) {
-    font-size: 16px;
-  }
 `;
 
 export default Text;
