@@ -7,14 +7,20 @@ import { history } from "../redux/configStore";
 
 const Header = (props) => {
   const dispatch = useDispatch();
-  const is_login = useSelector((state) => state.user.is_login);
-  //FIXME: 토큰 로컬스토리지에서 가져오기~~!!!!
-  const is_token = localStorage
-  console.log(is_token);
+  // const is_login = useSelector((state) => state.user.is_login);
+  // console.log(is_login);
+ 
+ //쿠키유무 확인
+  const is_loginCheck = document.cookie? true : false;
+  console.log(is_loginCheck);
+  //토큰유무 화깅
+  const is_localStorage = localStorage.getItem("access-token") ? true : false;
+  console.log(is_localStorage);
+  
 
   //TODO: 토큰값 받아오면 쿠키에 토큰값이 있니? 로도 체크하는거 추가
 
-  if (is_login) {
+  if (is_loginCheck && is_localStorage) {
     return (
       <React.Fragment>
         <Grid is_flex padding="4px 16px">

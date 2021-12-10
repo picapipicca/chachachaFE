@@ -44,7 +44,6 @@ const loginDB = (id, pwd) => {
 			.then((res) => {
                     localStorage.setItem('access-token', res.data.token);
                     setCookie('id',id);
-                    setCookie("is_login","success");
 				    dispatch(setLogin({ id: id }));
 				    history.replace('/');
 
@@ -57,29 +56,10 @@ const loginDB = (id, pwd) => {
 	};
 };
     
-    //     // 쿠키에 정보 저장
-    //     localStorage.setItem('access-token', token);
-    //     setCookie('id',id);
-    //     setCookie("is_login","success");
-        
-    
-    //     // 헤더에 토큰 저장
-    //     axios.defaults.headers.common['token'] = `${token}`;
-    
-    //     dispatch(setLogin(data));
-    //     history.replace('/');
-        
-    //   } catch (error) {
-    //     console.error(error);
-    //     alert("존재하지 않는 회원정보입니다 회원가입을 해주세요!")
-    //   }
-    // };
-    
     const logOutDB = () => {
         return function(dispatch, getState , {history}){
             localStorage.clear('access-token');
             deleteCookie("id");
-            deleteCookie("is_login");
             dispatch(logOut());
             history.replace('/');
         };
@@ -90,17 +70,20 @@ const loginDB = (id, pwd) => {
 export default handleActions ({
     [LOGIN]: (state, action) =>
       produce(state, (draft) => {
+          setCookie("is_login","success");
           draft.user = action.payload.user;
           draft.is_login = true;
         
       }),
       [LOG_OUT] : (state,action) => produce (state,(draft) => {
+          deleteCookie("is_login");
           draft.user = null;
           draft.is_login = false;
           
       }),
       [GET_USER]: (state,action) => produce(state,(draft) => {}),
-    }, initialState
+    }, 
+    initialState
     );
 
     
