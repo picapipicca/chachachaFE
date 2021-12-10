@@ -1,25 +1,27 @@
 import React from "react";
 import { Grid, Text, Button, Input } from "../elements";
-import {setCookie,getCookie,deleteCookie} from "../shared/Cookie";
+// import {setCookie,getCookie,deleteCookie} from "../shared/Cookie";
 
 import { actionCreators as userActions } from "../redux/modules/user";
 import { useDispatch } from "react-redux";
 
 
+
 const Login = (props) => {
+
+  
+
   const dispatch = useDispatch();
 
-  const [user_id, setId] = React.useState("");
+  const [id, setId] = React.useState("");
   const [pwd, setPwd] = React.useState("");
   
 const login = () => {
-  if (user_id === "" || pwd === ""){
+  if (id === "" || pwd === ""){
     window.alert("아이디 혹은 비밀번호가 비어있습니다! 입력해주세요");
     return;
   }
-  setCookie("user_id", user_id, 3);
-  setCookie("user_pwd", pwd, 3);
-  dispatch(userActions.loginAction(user_id,pwd));
+  dispatch(userActions.loginDB(id,pwd));
 };
 
 
@@ -35,7 +37,7 @@ const login = () => {
             <Input
             margin = "0px auto"
              width ="100%"
-              value={user_id}
+              value={id}
               label="아이디"
               placeholder="아이디"
               _onChange={(e) => {
