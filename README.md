@@ -1,5 +1,5 @@
 # `항해99 미니프로젝트 10조 - 프론트(이서현, 이해원)`
-[와이어프레임](https://www.figma.com/file/UPBOgboo2mtCfwmDL3sJSO/Untitled?node-id=0%3A1) 
+👉[와이어프레임](https://www.figma.com/file/UPBOgboo2mtCfwmDL3sJSO/Untitled?node-id=0%3A1) 
 
 ### ![logo 2](https://user-images.githubusercontent.com/90237570/145667526-0c8e918f-b7ef-4edb-b38d-3fcaab878b37.png)
 
