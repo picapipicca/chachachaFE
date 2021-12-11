@@ -4,7 +4,8 @@
 
 
 
-[백엔드 Repository 링크](https://github.com/kwak9898/ChaChaCha_Back_end)
+#### 👀 [백엔드 Repository 링크](https://github.com/kwak9898/ChaChaCha_Back_end)
+
 ## 🙌🏻member
 
 ### view
