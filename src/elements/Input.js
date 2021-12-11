@@ -88,7 +88,7 @@ const InputField = styled.input`
     props.margin ? `margin: ${props.margin};` : `margin-bottom: 20px;`}
   &:focus {
     outline: none;
-    border: 2px solid #EF9833;
+    border: 2px solid #568bdb;
   }
 
 `;

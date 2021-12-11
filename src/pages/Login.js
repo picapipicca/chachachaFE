@@ -1,15 +1,16 @@
 import React from "react";
-import { Grid, Text, Button, Input } from "../elements";
+import { Grid, Text, Input } from "../elements";
 // import {setCookie,getCookie,deleteCookie} from "../shared/Cookie";
 
 import { actionCreators as userActions } from "../redux/modules/user";
 import { useDispatch } from "react-redux";
+import styled from 'styled-components';
 
 
 
 const Login = (props) => {
-
   
+  const {history} = props;
 
   const dispatch = useDispatch();
 
@@ -22,13 +23,14 @@ const login = () => {
     return;
   }
   dispatch(userActions.loginDB(id,pwd));
+  
 };
 
 
   return (
     <React.Fragment>
-      <div style ={{width:"50vw", flexDirection: "row"}}>
-        <Grid padding="16px" border="1px solid #000" margin ="10% 50%">
+      <div style ={{width:"50vw", flexDirection: "row",}}>
+        <Grid padding="50px" border="1px solid #e6e4df" margin ="10% 50%">
           <Text size="32px" type="heading" bold center>
             로그인
           </Text>
@@ -59,19 +61,58 @@ const login = () => {
             />
           </Grid>
           <Grid padding="0px 30px 15px 30px">
-            <Button
-              text="로그인"
-              padding="17px 0px 30px 0px"
-              font_size="16px"
-              _onClick={() => {
+            <LoginBtn
+              onClick={() => {
                 login();
               }}
-            ></Button>
+            >로그인</LoginBtn>
           </Grid>
         </Grid>
       </div>
     </React.Fragment>
   );
 };
+const LoginBtn = styled.div`
+background-color : #35588c;
+color: white;
+transition: all 0.2s linear 0s;
+border-radius: 6px;
+height:35px;
+font-weight:350;
+font-size: 25px;
+width: 37vw;
+margin: 20px auto 0px auto;
+text-align: center;
+padding: 6px 0px 0px 0px;
+  
+  &:before {
+    content: "\f054";
+    font-family: FontAwesome;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0px;
+    height: 100%;
+    width: 37vw;
+    background-color: rgba($overlay-color,0.3);
+    border-radius: 0 50% 50% 0;
+    transform: scale(0,1);
+    transform-origin: left center;
+    transition: all 0.2s linear 0s;
+  }
+  
+   &:hover {
+    text-indent: 30px;
+     
+      
+    
+    &:before {
+      transform: scale(1,1);
+      text-indent: 0;
+    }
+  }
+`;
 
 export default Login;

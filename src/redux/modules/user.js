@@ -31,7 +31,7 @@ const loginAction = (user) => {
     return function (dispatch, getState, {history}) {
         console.log(history);
         dispatch(setLogin(user));
-        history.push('/');
+        history.replace('/');
     }
 }
 
@@ -46,22 +46,31 @@ const loginDB = (id, pwd) => {
                     setCookie('id',id);
 				    dispatch(setLogin({ id: id }));
 				    history.replace('/');
-
-
-                    
 			})
 			.catch((err) => {
-				window.alert('없는 회원정보 입니다! 회원가입을 해주세요!');
+				window.alert('잘못된 회원정보 입니다. 비회원이라면 회원가입을 해주세요!');
 			});
 	};
 };
     
     const logOutDB = () => {
         return function(dispatch, getState , {history}){
+            
             localStorage.clear('access-token');
             deleteCookie("id");
             dispatch(logOut());
             history.replace('/');
+        };
+    };
+    const loginCheckDB = () => {
+        return function (dispatch, getState, { history }) {
+            const tokenCheck = localStorage.getItem('access-token');
+            const idCheck = document.cookie;
+            if (tokenCheck) {
+                dispatch(setLogin({ id: idCheck }));
+            } else {
+                dispatch(logOut());
+            }
         };
     };
 
@@ -70,15 +79,17 @@ const loginDB = (id, pwd) => {
 export default handleActions ({
     [LOGIN]: (state, action) =>
       produce(state, (draft) => {
-          setCookie("is_login","success");
+          setCookie("is_login", "success");
           draft.user = action.payload.user;
           draft.is_login = true;
+          console.log(draft.is_login);
         
       }),
       [LOG_OUT] : (state,action) => produce (state,(draft) => {
-          deleteCookie("is_login");
+        deleteCookie("is_login");
           draft.user = null;
           draft.is_login = false;
+          
           
       }),
       [GET_USER]: (state,action) => produce(state,(draft) => {}),
@@ -94,7 +105,8 @@ export default handleActions ({
         getUser,
         loginAction,
         loginDB,
-        logOutDB
+        logOutDB,
+        loginCheckDB,
     };
 
 export {actionCreators};

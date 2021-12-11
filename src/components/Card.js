@@ -56,6 +56,8 @@ const CardBox = styled.div`
     transition: box-shadow 300ms ease-in-out;
     float: left;
     min-width: 200px;
+    width : 230px;
+    
     
     border: 1px solid #eff0f0;
     margin: 10px 10px;
