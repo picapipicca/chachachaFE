@@ -4,21 +4,21 @@ import { createBrowserHistory } from "history";
 import { connectRouter } from "connected-react-router";
 
 import User from "./modules/user";
-import Card from "./modules/card";
+import comment from "./modules/comment";
 
 //리듀서엮기
 export const history = createBrowserHistory();
 
 const rootReducer = combineReducers({
   user: User,
-  card: Card,
-  router: connectRouter(history),
+  // router: connectRouter(history),
+  comment: comment,
 });
 
 // 미들웨어 묶기
-const middlewares = [thunk.withExtraArgument({history: history})];
+const middlewares = [thunk.withExtraArgument({ history: history })];
 
-    // 어느 환경인 지 알려줌(개발환경, 프로덕션(배포)환경 ...)
+// 어느 환경인 지 알려줌(개발환경, 프로덕션(배포)환경 ...)
 const env = process.env.NODE_ENV;
 
 // logger
@@ -37,4 +37,4 @@ const enhancer = composeEnhancers(applyMiddleware(...middlewares));
 //스토어 만들기
 let store = (initialStore) => createStore(rootReducer, enhancer);
 
-    export default store();
+export default store();

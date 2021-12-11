@@ -58,7 +58,11 @@ const Btn = styled.button`
   width: ${(props) => props.width};
   height: 40px;
   background-color: ${(props) => (props.disabled ? "#D5CABE" : "#FB8631")};
+<<<<<<< Updated upstream
   ${(props) => (props.bg ? `background-color : ${props.bg};` : "")};
+=======
+  ${(props) => (props.bgcolor ? `background-color : ${props.bgcolor};` : "")};
+>>>>>>> Stashed changes
   border: none;
   border-radius: 3px;
   color: ${(props) => props.color};
