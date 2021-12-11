@@ -54,7 +54,7 @@ const CardList = (props) => {
         {card_list &&
           card_list.map((c, idx) => {
             return (
-              <Grid margin="16px 30px" key={c.id}>
+              <Grid margin="16px 30px" key={c.id} _onClick={()=>{history.push(`/detail/${c.id}`)}}>
                 <Card key={c.id} {...c} />
               </Grid>
             );
