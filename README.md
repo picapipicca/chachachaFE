@@ -1,4 +1,4 @@
-# 항해99 미니프로젝트 10조 - 프론트(이서현, 이해원)
+# `항해99 미니프로젝트 10조 - 프론트(이서현, 이해원)`
 [와이어프레임](https://www.figma.com/file/UPBOgboo2mtCfwmDL3sJSO/Untitled?node-id=0%3A1) 
 
 ### ![logo 2](https://user-images.githubusercontent.com/90237570/145667526-0c8e918f-b7ef-4edb-b38d-3fcaab878b37.png)
@@ -7,15 +7,15 @@
 
 #### 👀 [백엔드 Repository 링크](https://github.com/kwak9898/ChaChaCha_Back_end)
 
-## 🙌🏻member
+## `🙌🏻member`
 
-### view
+### `view`
 #### 서현
  회원가입 / 댓글 작성/수정/삭제 
 #### 해원
 로그인 / 메인페이지 /카드데이터 정렬
 
-### 개요
+### `개요`
 #### 명칭 : chachacha
 #### 개발 인원 : 4명
 #### 개발 기간 : 2021.12.06 ~ 2021.12.11
@@ -47,7 +47,7 @@ _빌드 후, S3와 EC2를 연동_
 #### _JWT 로컬 스토리지 저장방식_
 #### _카테고리(태그)별 조회기능_
 
-###`✍🏻 프로젝트 소스`
+### `✍🏻 프로젝트 소스`
 
 #### @최소단위 엘리먼트
 
