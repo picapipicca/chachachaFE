@@ -1,49 +1,67 @@
 import React from "react";
 import Card from "../components/Card";
 import { actionCreators as loadActions } from "../redux/modules/card";
-
-import {Grid,Button,Spinner} from "../elements";
-
-
-import { useSelector ,useDispatch} from 'react-redux';
-
-
+import { Grid } from "../elements";
+import { useSelector, useDispatch } from "react-redux";
+import Button from "@material-ui/core/Button";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
 
 const CardList = (props) => {
+  const { history } = props;
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch();
+  const card_list = useSelector((state) => state.card.list);
 
-    const card_list = useSelector((state) => state.card.list);
-    console.log(card_list);
-    const is_loaded = useSelector(state => state.card.is_loaded);
-   
+  React.useEffect(() => {
+    dispatch(loadActions._loadCars());
+  }, []);
 
-    // const {history} = props;
+  return (
+    <Grid>
+      <Grid padding="16px 50px">
+        <Grid is_flex>
+          <ButtonGroup variant="text" aria-label="text button group" size="large">
+          <Button
+            color="secondary"
+            onClick={() => {
+              history.push("/");
+            }}
+          >
+            전체보기
+          </Button>
+          <Button
+            color="primary"
+            margin="0px 10px"
+            onClick={() => {
+              history.push("/filterKorea");
+            }}
+          >
+            국산차
+          </Button>
+          <Button
+            color="primary"
+            onClick={() => {
+              history.push("/filterAbroad");
+            }}
+          >
+            수입차
+          </Button>
+          </ButtonGroup>
+        </Grid>
+      </Grid>
 
-    React.useEffect(()=> {
-        dispatch(loadActions._loadCars());
-    },[]);
-
-    console.log(card_list);
-
-    return (
-        
-        <React.Fragment>
-            <Grid is_flex width="30vw">  
-                <Button bg="white" text="국산차"></Button>
-                <p>/</p>
-                <Button bg="white" text="수입차"></Button>
-            </Grid>
-            <Grid>
-                {card_list && card_list.cars.map((c,idx) => {
-                    return <Card key={c.id} {...c}/>
-                })}
-            </Grid>
-            {!is_loaded && <Spinner />}
-        </React.Fragment>
-    );
-}
-
-
+      <Grid>
+        {card_list &&
+          card_list.map((c, idx) => {
+            return (
+              <Grid margin="16px 30px" key={c.id}>
+                <Card key={c.id} {...c} />
+              </Grid>
+            );
+          })}
+      </Grid>
+    </Grid>
+  );
+};
 
 export default CardList;
