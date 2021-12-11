@@ -7,6 +7,7 @@ const Button = (props) => {
     width,
     bg,
     margin,
+    text,
     padding,
     font_size,
     _disabled,
@@ -15,6 +16,7 @@ const Button = (props) => {
   } = props;
 
   const styles = {
+    
     width,
     bg,
     margin,
@@ -32,12 +34,14 @@ const Button = (props) => {
 
   return (
     <Btn {...styles} disabled={_disabled} onClick={_onClick}>
-      {children}
+      {text ? text: children}
     </Btn>
   );
 };
 
 Button.defaultProps = {
+  text : false,
+  color : "#212121",
   children: null,
   width: "100%",
   margin: false,
@@ -48,23 +52,26 @@ Button.defaultProps = {
 };
 
 const Btn = styled.button`
-  font-family: "Sunflower", sans-serif;
+  /* font-family: "Sunflower", sans-serif; */
   cursor: pointer;
   box-sizing: border-box;
   width: ${(props) => props.width};
   height: 40px;
-  background-color: ${(props) => (props.disabled ? "#1b9cfc8c" : "#1B9CFC")};
+  background-color: ${(props) => (props.disabled ? "#D5CABE" : "#FB8631")};
+<<<<<<< Updated upstream
+  ${(props) => (props.bg ? `background-color : ${props.bg};` : "")};
+=======
+  ${(props) => (props.bgcolor ? `background-color : ${props.bgcolor};` : "")};
+>>>>>>> Stashed changes
   border: none;
   border-radius: 3px;
-  color: white;
+  color: ${(props) => props.color};
 
   ${(props) => (props.margin ? `margin: ${props.margin};` : "")};
   ${(props) => (props.padding ? `padding: ${props.padding};` : "")};
   ${(props) => (props.font_size ? `font-size: ${props.font_size};` : "")};
 
-  @media (max-width: 280px) {
-    font-size: 11px;
-  }
+
 `;
 
 const PlusBtn = styled.button`

@@ -2,8 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { Text } from "../elements";
 
+//FIXME: border {...style 로 빼줘야하는지}
 const Input = (props) => {
   const {
+    border,
     label,
     type,
     placeholder,
@@ -72,6 +74,7 @@ Input.defaultProps = {
   _onSubmit: () => {},
   margin: false,
   width: false,
+  border : false,
 };
 
 const InputField = styled.input`
@@ -79,18 +82,20 @@ const InputField = styled.input`
   min-width: 230px;
   box-sizing: border-box;
   padding: 10px;
-  border: 2px solid #25ccf7;
+  ${(props) => (props.border ? `boder: ${props.border};` : `border: 2px solid #000;`)}
   border-radius: 3px;
   ${(props) =>
     props.margin ? `margin: ${props.margin};` : `margin-bottom: 20px;`}
   &:focus {
     outline: none;
-    border: 2px solid #1b9cfc;
+<<<<<<< Updated upstream
+    border: 2px solid #568bdb;
   }
 
-  @media (max-width: 280px) {
-    min-width: 150px;
+=======
+    border: 2px solid #EF9833;
   }
+>>>>>>> Stashed changes
 `;
 
 const TextAreaField = styled.textarea`
@@ -98,12 +103,12 @@ const TextAreaField = styled.textarea`
   width: 100%;
   box-sizing: border-box;
   padding: 10px;
-  border: 2px solid #25ccf7;
+  ${(props) => (props.border ? `boder: ${props.border};` : `border: 2px solid #000;`)}
   border-radius: 3px;
   margin-bottom: 20px;
   &:focus {
     outline: none;
-    border: 2px solid #1b9cfc;
+    border: 2px solid #EF9833;
   }
 `;
 

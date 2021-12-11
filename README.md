@@ -1,33 +1,24 @@
-# Getting Started with Create React App
+# 항해99 미니프로젝트 10조 - 프론트(이서현, 이해원)
+와이어프레임 : 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## 🙌🏻member
 
-In the project directory, you can run:
+### view
+서현
+로그인 & 회원가입 / 댓글 작성/ 댓글 수정/댓글 삭제 
+해원
+메인(메인페이지 슬라이드)
 
-### `yarn start`
+### function
+서현
+댓글게시판 CRUD / 로그인 상태에서만 리뷰 Create 가능 / 내가 쓴 리뷰에서만 Update,Delete 가능
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+해원
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ### `yarn eject`
 
