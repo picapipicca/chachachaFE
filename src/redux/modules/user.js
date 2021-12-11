@@ -7,14 +7,18 @@ import { userAPI } from "../../api/userApi";
 
 
 //action type
+
 const LOGIN = "LOGIN";
 const LOG_OUT = "LOG_OUT";
 const GET_USER = "GET_USER";
+const ID_CHECK = "ID_CHECK"
 
 //action creator
+
 const setLogin = createAction(LOGIN, (user)=> ({user}));
 const logOut = createAction(LOG_OUT,(user)=>({user}));
 const getUser = createAction(GET_USER,(user)=> ({user}));
+const idCheck = createAction(ID_CHECK,(errorMessage)=> ({errorMessage}))
 
 //초기값설정
 const initialState = {
@@ -26,17 +30,24 @@ const user_initial = {
     pwd:"1111",
 };
 
-//middleware actions
-const loginAction = (user) => {
-    return function (dispatch, getState, {history}) {
-        console.log(history);
-        dispatch(setLogin(user));
-        history.replace('/');
-    }
-}
 
 //thunk
-//로그인 api호출
+
+    const signupAction = (id, pwd, confirm) => async (dispatch, getState, { history }) => {
+        try {
+          await userAPI.signup(id, pwd, confirm);
+      
+          alert('회원가입이 완료되었습니다');
+          history.replace('/login');
+          
+        }    catch(err) {
+                const msg=err.response.data.errorMessage;
+              if(msg === "이미 가입된 아이디가 있습니다."){
+                  dispatch(idCheck(err.response));
+              }       
+      };
+      };
+    
 const loginDB = (id, pwd) => {
 	return function (dispatch, getState, { history }) {
 		userAPI
@@ -77,6 +88,11 @@ const loginDB = (id, pwd) => {
 // Reducer
 
 export default handleActions ({
+    [ID_CHECK]: (state, action) =>
+      produce(state, (draft) => {
+          draft.id_check = action.payload.errorMessage.data.errorMessage
+        
+      }),
     [LOGIN]: (state, action) =>
       produce(state, (draft) => {
           setCookie("is_login", "success");
@@ -94,6 +110,7 @@ export default handleActions ({
       }),
       [GET_USER]: (state,action) => produce(state,(draft) => {}),
     }, 
+    
     initialState
     );
 
@@ -103,7 +120,7 @@ export default handleActions ({
         setLogin,
         logOut,
         getUser,
-        loginAction,
+        signupAction,
         loginDB,
         logOutDB,
         loginCheckDB,

@@ -8,4 +8,9 @@ const api = axios.create({
 
 export const userAPI = {
     login: (id, pwd) => api.post('/api/login', { id: id, pwd: pwd }),
-};
+	signup: (id, pwd, confirm) => {
+        api.post('/api/users', {
+			id: id,
+			pwd: pwd,
+			confirm: confirm,
+		})}}

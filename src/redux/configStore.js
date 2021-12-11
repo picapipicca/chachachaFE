@@ -5,11 +5,13 @@ import { connectRouter } from "connected-react-router";
 
 import User from "./modules/user";
 import Card from "./modules/card";
+import comment from "./modules/comment";
 
 //리듀서엮기
 export const history = createBrowserHistory();
 
 const rootReducer = combineReducers({
+  comment:Comment,
   user: User,
   card: Card,
   router: connectRouter(history),

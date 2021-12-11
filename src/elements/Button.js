@@ -41,7 +41,7 @@ const Button = (props) => {
 
 Button.defaultProps = {
   text : false,
-  color : "#212121",
+  color : "#ffffff",
   children: null,
   width: "100%",
   margin: false,

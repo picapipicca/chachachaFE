@@ -11,6 +11,8 @@ import FilterKorea from '../components/FilterKorea';
 import FilterAbroad from '../components/FilterAbroad';
 import { actionCreators as userActions } from "../redux/modules/user";
 import { useDispatch } from 'react-redux';
+import Signup from '../pages/Signup';
+import CardDetail from '../pages/CardDetail';
 
 
 
@@ -28,9 +30,11 @@ function App() {
      <Header></Header>
       <ConnectedRouter history={history}>
           <Route path = "/" exact component = {CardList}/>
+          <Route path = "/signup" exact component = {Signup}/>
           <Route path = "/filterKorea" exact component = {FilterKorea}/>
           <Route path = "/filterAbroad" exact component = {FilterAbroad}/>
           <Route exact path="/login" component={Login} />       
+          <Route exact path="/detail/:card_id" component={CardDetail} />       
       </ConnectedRouter>
    </React.Fragment>
   );
